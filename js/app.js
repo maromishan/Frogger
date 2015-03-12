@@ -40,9 +40,9 @@ var Player = function(x, y){
 
 Player.prototype.update = function(dt) {
     //detect collisions between player and enemy; reset player location when collision detected
-    for(var i=0;i<allEnemies.length-1;i++){
+    for(var i=0;i<allEnemies.length;i++){
         if(allEnemies[i].x - 45 < this.x && allEnemies[i].x + 45 > this.x
-            && allEnemies[i].y - 45 < this.y && allEnemies[i].y + 45 > this.y ){
+            && allEnemies[i].y - 45 < this.y && allEnemies[i].y + 45 > this.y){
             player.reset();
         }
     }
