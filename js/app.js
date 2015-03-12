@@ -10,7 +10,7 @@ var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -25,63 +25,57 @@ Enemy.prototype.update = function(dt) {
     }else{
         this.x =- this.x - 90;
     }
-
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 //Player class
 var Player = function(x, y){
    this.sprite = 'images/char-boy.png';
    this.x = x;
    this.y = y;
-}
+};
 
 Player.prototype.update = function(dt) {
-
     //detect collisions between player and enemy; reset player location when collision detected
-                  for(var enemy in allEnemies){
-                     if(allEnemies[enemy].x - 45 < this.x && allEnemies[enemy].x + 45 > this.x
-                        && allEnemies[enemy].y - 45 < this.y && allEnemies[enemy].y + 45 > this.y ){
-                        //allEnemies[enemy].x-10<player.x<allEnemies[enemy].x +10 && allEnemies[enemy].y-10<player.y<allEnemies[enemy].y+10)
-                        player.reset();
-                     }
-                  }
-
-            //reset player location when player reaches water
-            if(this.y < 15){
-                player.reset();
-                currentScore = currentScore + 1;
-                document.getElementById('score').innerHTML = "Score: " + currentScore;
-
-            }
-}
+    for(var i=0;i<allEnemies.length-1;i++){
+        if(allEnemies[i].x - 45 < this.x && allEnemies[i].x + 45 > this.x
+            && allEnemies[i].y - 45 < this.y && allEnemies[i].y + 45 > this.y ){
+            player.reset();
+        }
+    }
+    //reset player location when player reaches water
+    if(this.y < 15){
+        player.reset();
+        currentScore = currentScore + 1;
+        document.getElementById('score').innerHTML = "Score: " + currentScore;
+    }
+};
 //Draw the player of the screen
 Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Player.prototype.handleInput = function(key) {
-   if(key == 'left' && this.x > 20){
-      this.x -= 101;
-   }else if(key == 'right' && this.x < 400){
-      this.x += 101;
-   }else if(key == 'up' && this.y > 15){
-       this.y -= 82;
-   }else if(key == 'down' && this.y < 350){
-       this.y += 82;
-   }else{
-    player.reset();
-   }
-}
+    if(key == 'left' && this.x > 20){
+        this.x -= 101;
+    }else if(key == 'right' && this.x < 400){
+        this.x += 101;
+    }else if(key == 'up' && this.y > 15){
+        this.y -= 82;
+    }else if(key == 'down' && this.y < 350){
+        this.y += 82;
+    }else{
+        player.reset();
+    }
+};
 
 Player.prototype.reset = function(){
-       this.x = 202.5;
-       this.y = 385;
-
-}
+    this.x = 202.5;
+    this.y = 385;
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
