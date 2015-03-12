@@ -1,0 +1,5 @@
+References:
+1. https://developer.mozilla.org/en-US/docs/Web/JavaScript
+2. Udacity class forums (very helpful resource)
+3. www.w3schools.com/
+4. https://github.com/PatrickO10/froggerArcade/tree/master

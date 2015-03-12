@@ -40,7 +40,7 @@ var Player = function(x, y){
 }
 
 Player.prototype.update = function(dt) {
-   
+
     //detect collisions between player and enemy; reset player location when collision detected
                   for(var enemy in allEnemies){
                      if(allEnemies[enemy].x - 45 < this.x && allEnemies[enemy].x + 45 > this.x
@@ -77,10 +77,10 @@ Player.prototype.handleInput = function(key) {
    }
 }
 
-Player.prototype.reset = function(){   
+Player.prototype.reset = function(){
        this.x = 202.5;
        this.y = 385;
-    
+
 }
 
 // Now instantiate your objects.
